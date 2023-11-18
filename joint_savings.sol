@@ -49,7 +49,7 @@ contract JointSavings {
         Define a `require` statement that checks if the `recipient` is equal to either `accountOne` or `accountTwo`. The `requiere` statement returns the text `"You don't own this account!"` if it does not.
         */
         // Check if the recipient is one of the owners
-        require(recipient = accountOne || recipient = accountTwo, "You don't own this account!!");
+        require(recipient == accountOne || recipient == accountTwo, "You don't own this account!!");
 
         /*
         Define a `require` statement that checks if the `balance` is sufficient to accomplish the withdraw operation. If there are insufficient funds, the text `Insufficient funds!` is returned.
@@ -64,17 +64,17 @@ contract JointSavings {
         
         // if different, update the lastToWithdraw address
         if (lastToWithdraw != recipient) {
-            lastToWithdraw = recipiient;
+            lastToWithdraw = recipient;
         }
 
         // Call the `transfer` function of the `recipient` and pass it the `amount` to transfer as an argument.
-        // YOUR CODE HERE!
-
+        recipient.transfer(amount);
+        
         // Set  `lastWithdrawAmount` equal to `amount`
-        // YOUR CODE HERE!
+        lastWithdrawAmount = amount;
 
         // Call the `contractBalance` variable and set it equal to the balance of the contract by using `address(this).balance` to reflect the new balance of the contract.
-        // YOUR CODE HERE!
+        contractBalance = address(this).balance;
     }
 
     // Define a `public payable` function named `deposit`.
